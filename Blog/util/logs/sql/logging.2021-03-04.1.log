@@ -1,0 +1,2124 @@
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(16) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(16) NOT NULL UNIQUE;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 15:10:45] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 15:10:46] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-04 15:10:46] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(16) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(16) NOT NULL UNIQUE;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 19:00:34] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-04 19:00:35] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-03-04 19:03:25] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(16) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(16) NOT NULL UNIQUE;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-04 19:06:02] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-03-04 19:06:12] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(16) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-03-04 19:06:12] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-03-04 19:06:12] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 19:06:12] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(16) NOT NULL UNIQUE;
+
+sql [2021-03-04 19:06:12] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-03-04 19:06:12] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 19:06:12] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 19:06:12] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-03-04 19:06:12] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-04 19:06:12] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-03-04 19:06:12] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 19:06:12] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-03-04 19:06:13] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-04 19:06:13] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-03-04 19:06:13] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-03-04 19:06:13] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 19:06:13] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 19:06:13] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-04 19:06:13] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-03-04 19:11:32] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-04 19:12:24] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-04 19:12:35] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-04 19:12:46] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-04 19:13:11] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-04 19:13:50] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-04 19:14:07] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-04 19:14:40] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-04 19:20:31] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvxa' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-04 19:20:39] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvxas' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-04 19:20:41] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(16) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(16) NOT NULL UNIQUE;
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-04 19:25:34] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-03-04 19:25:35] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-03-04 19:25:35] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 19:25:35] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 19:25:35] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-04 19:25:35] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-03-04 19:25:59] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 19:26:59] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 19:29:56] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 19:29:58] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 19:31:14] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 19:31:53] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 19:32:30] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 19:33:50] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 19:34:00] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 19:34:02] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 19:34:16] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:18:17] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:18:17] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:18:17] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:23:07] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = 50);
+
+sql [2021-03-04 20:23:07] [DEBUG]: Executing (default): INSERT INTO `Articles` (`id`,`title`,`content`,`imgurl`,`author`,`createdAt`,`AdminId`) VALUES (DEFAULT,?,?,?,?,?,?);
+
+sql [2021-03-04 20:25:05] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = 50);
+
+sql [2021-03-04 20:25:05] [DEBUG]: Executing (default): INSERT INTO `Articles` (`id`,`title`,`content`,`imgurl`,`author`,`createdAt`,`AdminId`) VALUES (DEFAULT,?,?,?,?,?,?);
+
+sql [2021-03-04 20:34:21] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:35:11] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:35:34] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:35:56] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:36:59] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:04] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:04] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:04] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:04] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:13] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:13] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:54] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:55] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = '' AND `Admin`.`loginPwd` = ''));
+
+sql [2021-03-04 20:37:59] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:59] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:59] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:37:59] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:10] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:10] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:10] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:10] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:12] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:12] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:12] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:12] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:13] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:13] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:14] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:14] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:15] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:15] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:15] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:15] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:16] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:16] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:16] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:16] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:17] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = '' AND `Admin`.`loginPwd` = ''));
+
+sql [2021-03-04 20:38:18] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:18] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:19] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:19] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:19] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:19] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:20] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:20] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:20] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:20] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:21] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:21] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:21] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:21] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:38:32] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-04 20:39:27] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:39:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:39:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:39:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:39:44] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:39:44] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:39:44] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:39:44] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:39:46] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:39:46] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:39:46] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:39:46] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:54:18] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:54:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:54:18] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:54:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:54:22] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:54:22] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:54:22] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:54:22] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:15] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:15] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:15] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:15] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:16] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:16] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:16] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:16] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:18] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:18] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:19] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:19] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:19] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:19] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:20] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:20] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:20] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:20] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:46] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:46] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:46] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:46] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:56] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:56] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:56] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:55:56] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:56:30] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:56:30] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:56:30] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:56:30] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:56:39] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:56:39] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:56:39] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:56:39] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:14] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:14] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:17] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:17] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:17] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:17] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:29] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:29] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:29] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:29] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:59] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:59] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:59] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:57:59] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:58:37] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:58:37] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 20:58:37] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:05] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:05] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:07] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:12] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:13] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:13] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:18] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:18] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:34] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:34] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:34] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:34] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:41] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:43] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:43] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:43] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:43] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:46] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:46] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:46] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:47] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:48] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:48] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:00:50] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:03] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:36] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:40] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:40] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:40] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:40] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:41] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:41] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:41] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:41] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:42] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:42] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:42] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:42] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:43] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:43] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:43] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:43] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:44] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:44] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:44] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:01:44] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:17] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:17] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:17] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:17] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:17] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:38] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:38] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:38] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:39] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:39] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:39] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:39] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:41] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:41] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:41] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:41] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:43] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:43] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:43] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:02:43] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:03:37] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:03:37] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:03:37] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:03:37] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:03:38] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:03:38] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:03:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:03:39] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:03:55] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:03:55] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:03:55] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:03:55] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:09] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:09] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:09] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:09] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:15] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:15] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:15] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:15] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:45] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:45] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:45] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:45] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:53] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:53] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:53] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:04:53] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:28] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:28] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:28] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:28] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:30] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:30] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:30] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:30] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:37] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:37] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:37] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:37] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:39] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:39] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:39] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:05:39] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:00] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:00] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:00] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:00] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:07] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:07] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:07] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:07] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:09] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:09] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:09] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:09] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:10] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:10] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:10] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:07:10] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:08:35] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:08:35] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:08:35] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:08:35] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:08:48] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:08:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:08:48] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:08:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:10:54] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:10:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:10:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:10:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:10:56] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:10:56] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:10:56] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:10:56] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:12:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:12:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:12:27] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:12:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:12:29] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:12:29] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:12:29] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:12:29] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:12:50] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:12:50] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:12:50] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:12:50] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:38] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:38] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:38] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:41] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:41] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:41] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:41] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:57] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:57] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:57] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:57] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:58] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:58] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:58] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:14:58] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:15:00] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:15:00] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:15:00] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:15:00] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:15:01] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:15:01] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:15:01] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:15:01] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:12] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:12] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:12] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:12] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:14] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:14] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:48] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:48] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:49] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:49] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:49] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:16:49] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:19:01] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:19:01] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:19:01] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:19:01] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:19:02] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:19:02] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:19:02] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:19:02] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:22:32] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:22:32] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:22:32] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:22:32] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:22:34] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:22:34] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:22:34] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:22:34] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:45] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:45] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:45] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:45] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:51] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:51] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:51] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:51] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:54] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:58] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:58] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:58] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:24:58] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:27:54] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:27:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:27:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:27:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:29:23] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:29:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:29:23] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:29:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:30:09] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:30:09] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:30:09] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:30:09] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:32:00] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:32:00] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:32:00] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:32:00] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:32:06] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:32:06] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:32:06] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:32:06] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:33:01] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:33:01] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:33:01] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:33:01] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:33:48] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:33:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:33:48] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:33:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:20] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:20] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:20] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:20] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:23] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:23] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:24] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:24] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:24] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:24] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:26] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:26] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:44] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:44] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:44] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:44] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:46] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:46] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:46] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:46] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:48] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:48] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:36:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:26] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:26] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:28] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:28] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:28] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:28] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:30] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:30] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:30] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:30] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:32] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:32] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:32] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:37:32] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:38:18] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:38:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:38:18] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:38:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:38:20] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:38:20] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:38:20] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:38:21] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:38:36] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:38:36] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:38:36] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:38:36] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:39:39] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:39:39] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:39:39] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:39:39] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:39:55] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:39:55] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:39:55] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:39:55] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:40:10] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:40:10] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:40:10] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:40:10] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:43:48] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:43:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:43:48] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:43:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:43:50] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:43:50] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:43:50] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:43:50] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:13] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:13] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:14] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:14] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:29] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:29] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:29] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:29] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:30] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:30] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:30] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:46:30] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:47:40] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:47:40] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:47:40] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:47:40] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:47:41] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:47:41] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:47:41] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:47:41] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:49:19] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:49:19] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:49:19] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:49:19] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:49:21] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:49:21] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:49:21] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:49:21] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:50:19] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:50:19] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:50:19] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:50:19] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:50:26] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:50:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:50:26] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:50:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:51:42] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:51:42] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:51:42] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:51:42] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:51:48] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:51:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:51:48] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:51:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:52:48] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:52:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:52:48] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:52:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:52:51] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:52:52] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:52:52] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:52:52] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:56:44] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:56:44] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:56:44] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:56:44] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:56:48] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:56:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:56:48] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:56:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:57:25] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:57:25] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:57:25] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:57:25] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:57:27] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:57:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:57:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:57:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:34] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:34] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:34] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:34] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:36] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:36] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:36] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:36] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:50] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:50] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:50] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:50] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:51] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:51] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:51] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 21:58:51] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:03] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:03] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:03] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:03] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:04] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:04] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:04] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:04] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:37] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:37] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:37] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:37] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:38] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:38] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:00:39] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:01:58] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:01:58] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:01:58] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:01:58] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:02:03] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:02:03] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:02:03] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:02:03] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:06:23] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:06:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:06:23] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:06:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:06:24] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:06:24] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:06:24] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:06:24] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:12:48] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:12:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:12:48] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:12:48] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:12:51] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:12:51] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:12:51] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:12:51] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:12:59] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:12:59] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:12:59] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:12:59] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:13:11] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:13:11] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:13:11] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:13:11] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:15:07] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:15:07] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:15:07] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:15:07] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:17:49] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:17:49] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:17:49] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:17:49] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:19:28] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:19:28] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:19:28] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:19:28] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:21:23] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:21:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:21:23] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:21:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:21:25] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:21:25] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:21:25] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:21:25] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:28:54] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:28:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:28:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:28:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:05] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:05] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:10] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:10] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:10] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:10] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:12] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:12] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:12] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:12] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:14] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:14] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:16] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:16] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:16] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:16] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:18] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:18] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:20] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:20] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:20] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:20] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:23] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:23] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:25] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:25] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:25] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:25] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:26] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:26] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:29:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:15] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:15] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:15] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:15] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:17] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:17] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:17] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:29] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:29] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:29] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:29] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:35] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:35] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:35] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:35] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:38] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:38] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:31:38] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:07] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:07] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:07] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:07] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:09] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:09] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:09] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:09] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:11] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:11] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:11] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:11] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:13] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:13] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:15] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:15] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:15] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:15] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:17] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:17] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:17] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:17] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:19] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:19] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:19] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:19] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:21] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:21] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:21] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:21] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:23] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:23] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:32:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:33:58] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:33:58] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:33:58] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:33:58] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:33:59] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:33:59] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:33:59] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:33:59] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:00] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:00] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:00] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:00] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:04] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:04] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:04] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:04] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:05] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:05] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:08] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:08] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:08] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:08] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:10] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:10] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:10] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:10] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:11] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:11] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:11] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:34:11] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:36:21] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:36:21] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:36:21] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:36:21] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:36:23] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:36:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:36:23] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:36:23] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:36:40] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:36:40] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:36:40] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:36:40] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:38:26] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:38:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:38:26] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:38:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:38:28] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:38:28] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:38:28] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:38:28] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:39:05] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:39:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:39:05] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:39:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:39:06] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:39:06] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:39:06] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:39:06] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:40:26] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:40:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:40:26] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:40:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:40:27] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:40:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:40:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:40:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:45:14] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:45:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:45:14] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:45:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:46:18] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:46:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:46:18] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:46:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:46:18] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:46:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:46:18] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:46:18] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:47:33] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:47:33] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:47:33] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:47:33] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:47:34] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:47:34] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:47:34] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:47:34] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 22:47:46] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'abc' AND `Admin`.`loginPwd` = '123125'));
+
+sql [2021-03-04 22:47:49] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'abc' AND `Admin`.`loginPwd` = '123123'));
+
+sql [2021-03-04 23:25:31] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(16) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-03-04 23:25:31] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-03-04 23:25:31] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 23:25:31] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(16) NOT NULL UNIQUE;
+
+sql [2021-03-04 23:25:31] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-03-04 23:25:31] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 23:25:31] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 23:25:31] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-03-04 23:25:32] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-04 23:25:32] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-03-04 23:25:32] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 23:25:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-03-04 23:25:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-04 23:25:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-03-04 23:25:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-03-04 23:25:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 23:25:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 23:25:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-04 23:25:32] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(16) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(16) NOT NULL UNIQUE;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-04 23:26:31] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-04 23:26:32] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-03-04 23:28:52] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:28:52] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:28:52] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:28:52] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:43:42] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:43:42] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:43:42] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:43:43] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:49:03] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:49:03] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:49:03] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:49:03] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:50:24] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'abc' AND `Admin`.`loginPwd` = '123123'));
+
+sql [2021-03-04 23:50:32] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'abc' AND `Admin`.`loginPwd` = '123124'));
+
+sql [2021-03-04 23:50:35] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'abc' AND `Admin`.`loginPwd` = '123123'));
+
+sql [2021-03-04 23:51:36] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:51:36] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:51:36] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:51:36] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:57:17] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:57:17] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:57:17] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:57:17] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:57:40] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:57:40] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:57:40] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:57:40] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:57:43] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:57:43] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:57:43] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:57:43] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:58:06] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:58:06] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:58:06] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:58:06] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:58:07] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:58:07] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:58:07] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:58:07] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:07] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:07] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:07] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:07] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:08] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:08] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:08] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:08] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:09] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:09] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:09] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:09] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:11] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:11] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:11] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:11] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:12] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:12] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:12] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:12] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:13] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:13] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:14] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:14] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:14] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:15] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:15] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:15] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:15] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:17] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:17] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:17] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-04 23:59:17] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
