@@ -1,0 +1,328 @@
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(8) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(8) NOT NULL UNIQUE;
+
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-17 00:44:34] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Comments` (`id` INTEGER NOT NULL auto_increment , `commentId` VARCHAR(8) NOT NULL, `replyId` VARCHAR(8), `replyWhoId` VARCHAR(8), `content` TEXT NOT NULL, `flag` TINYINT(1) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `ArticleId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`ArticleId`) REFERENCES `Articles` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Comments`;
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Comments' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `commentId` `commentId` VARCHAR(8) NOT NULL;
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `replyId` `replyId` VARCHAR(8);
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `replyWhoId` `replyWhoId` VARCHAR(8);
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `flag` `flag` TINYINT(1) NOT NULL;
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-17 00:44:35] [DEBUG]: Executing (default): ALTER TABLE `Comments` ADD FOREIGN KEY (`ArticleId`) REFERENCES `Articles` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-17 00:44:36] [DEBUG]: Executing (default): SHOW INDEX FROM `Comments`
+
+sql [2021-03-17 00:44:42] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:44:42] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:44:42] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:45:25] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'abc' AND `Admin`.`loginPwd` = '123123'));
+
+sql [2021-03-17 00:45:53] [DEBUG]: Executing (default): INSERT INTO `Admins` (`id`,`loginId`,`loginPwd`,`createdAt`) VALUES (DEFAULT,?,?,?);
+
+sql [2021-03-17 00:46:05] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'abc' AND `Admin`.`loginPwd` = '123123'));
+
+sql [2021-03-17 00:46:17] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:46:20] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '772');
+
+sql [2021-03-17 00:46:54] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = 95);
+
+sql [2021-03-17 00:46:54] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:46:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:46:54] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:46:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:46:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:46:58] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:47:08] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 776);
+
+sql [2021-03-17 00:47:08] [DEBUG]: Executing (default): INSERT INTO `Comments` (`id`,`commentId`,`replyId`,`replyWhoId`,`content`,`flag`,`createdAt`,`ArticleId`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+
+sql [2021-03-17 00:47:08] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:08] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:08] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:47:15] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 776);
+
+sql [2021-03-17 00:47:15] [DEBUG]: Executing (default): INSERT INTO `Comments` (`id`,`commentId`,`replyId`,`replyWhoId`,`content`,`flag`,`createdAt`,`ArticleId`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+
+sql [2021-03-17 00:47:15] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:15] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:16] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:47:19] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = 95);
+
+sql [2021-03-17 00:47:19] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:19] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:19] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:19] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:19] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:21] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:47:26] [DEBUG]: Executing (default): UPDATE `Comments` SET `deletedAt`=? WHERE `deletedAt` IS NULL AND `id` = ?
+
+sql [2021-03-17 00:47:30] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = 95);
+
+sql [2021-03-17 00:47:30] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:30] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:30] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:30] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:30] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:31] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:47:47] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'xde' AND `Admin`.`loginPwd` = 'v873d94dx75VCG'));
+
+sql [2021-03-17 00:47:50] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:47:53] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 776);
+
+sql [2021-03-17 00:47:53] [DEBUG]: Executing (default): INSERT INTO `Comments` (`id`,`commentId`,`replyId`,`replyWhoId`,`content`,`flag`,`createdAt`,`ArticleId`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+
+sql [2021-03-17 00:47:53] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:53] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:47:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:48:02] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 776);
+
+sql [2021-03-17 00:48:02] [DEBUG]: Executing (default): INSERT INTO `Comments` (`id`,`commentId`,`replyId`,`replyWhoId`,`content`,`flag`,`createdAt`,`ArticleId`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+
+sql [2021-03-17 00:48:02] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:02] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:03] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:48:05] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = 1);
+
+sql [2021-03-17 00:48:05] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:05] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:05] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:06] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:48:18] [DEBUG]: Executing (default): UPDATE `Comments` SET `deletedAt`=? WHERE `deletedAt` IS NULL AND `id` = ?
+
+sql [2021-03-17 00:48:25] [DEBUG]: Executing (default): UPDATE `Comments` SET `deletedAt`=? WHERE `deletedAt` IS NULL AND `id` = ?
+
+sql [2021-03-17 00:48:26] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = 1);
+
+sql [2021-03-17 00:48:26] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:26] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:27] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:30] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '775');
+
+sql [2021-03-17 00:48:33] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 775);
+
+sql [2021-03-17 00:48:33] [DEBUG]: Executing (default): INSERT INTO `Comments` (`id`,`commentId`,`replyId`,`replyWhoId`,`content`,`flag`,`createdAt`,`ArticleId`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+
+sql [2021-03-17 00:48:33] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:33] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:33] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '775');
+
+sql [2021-03-17 00:48:36] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 775);
+
+sql [2021-03-17 00:48:36] [DEBUG]: Executing (default): INSERT INTO `Comments` (`id`,`commentId`,`replyId`,`replyWhoId`,`content`,`flag`,`createdAt`,`ArticleId`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+
+sql [2021-03-17 00:48:36] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:36] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:36] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '775');
+
+sql [2021-03-17 00:48:37] [DEBUG]: Executing (default): UPDATE `Comments` SET `deletedAt`=? WHERE `deletedAt` IS NULL AND `id` = ?
+
+sql [2021-03-17 00:48:38] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = 1);
+
+sql [2021-03-17 00:48:38] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:38] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:38] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:38] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:40] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:48:44] [DEBUG]: Executing (default): UPDATE `Comments` SET `deletedAt`=? WHERE `deletedAt` IS NULL AND `id` = ?
+
+sql [2021-03-17 00:48:47] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = 1);
+
+sql [2021-03-17 00:48:47] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:47] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:47] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:47] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:47] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:48] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:48:52] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 776);
+
+sql [2021-03-17 00:48:52] [DEBUG]: Executing (default): INSERT INTO `Comments` (`id`,`commentId`,`replyId`,`replyWhoId`,`content`,`flag`,`createdAt`,`ArticleId`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+
+sql [2021-03-17 00:48:52] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:52] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:53] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:48:56] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 776);
+
+sql [2021-03-17 00:48:56] [DEBUG]: Executing (default): INSERT INTO `Comments` (`id`,`commentId`,`replyId`,`replyWhoId`,`content`,`flag`,`createdAt`,`ArticleId`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+
+sql [2021-03-17 00:48:56] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:56] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:48:56] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:49:13] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'uwf' AND `Admin`.`loginPwd` = 'QJ0l1782'));
+
+sql [2021-03-17 00:49:16] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:49:22] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 776);
+
+sql [2021-03-17 00:49:22] [DEBUG]: Executing (default): INSERT INTO `Comments` (`id`,`commentId`,`replyId`,`replyWhoId`,`content`,`flag`,`createdAt`,`ArticleId`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+
+sql [2021-03-17 00:49:22] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:49:22] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:49:23] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:49:28] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 776);
+
+sql [2021-03-17 00:49:28] [DEBUG]: Executing (default): INSERT INTO `Comments` (`id`,`commentId`,`replyId`,`replyWhoId`,`content`,`flag`,`createdAt`,`ArticleId`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+
+sql [2021-03-17 00:49:28] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:49:28] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:49:29] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:49:30] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = 4);
+
+sql [2021-03-17 00:49:30] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:49:30] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:49:30] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:49:30] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:49:30] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:49:32] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:49:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 776);
+
+sql [2021-03-17 00:49:38] [DEBUG]: Executing (default): INSERT INTO `Comments` (`id`,`commentId`,`replyId`,`replyWhoId`,`content`,`flag`,`createdAt`,`ArticleId`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+
+sql [2021-03-17 00:49:38] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:49:38] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:49:39] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
+sql [2021-03-17 00:49:47] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 776);
+
+sql [2021-03-17 00:49:47] [DEBUG]: Executing (default): INSERT INTO `Comments` (`id`,`commentId`,`replyId`,`replyWhoId`,`content`,`flag`,`createdAt`,`ArticleId`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+
+sql [2021-03-17 00:49:47] [DEBUG]: Executing (default): SELECT `id`, `commentId`, `replyId`, `replyWhoId`, `content`, `flag`, `createdAt`, `deletedAt`, `ArticleId` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:49:47] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Comments` AS `Comment` WHERE (`Comment`.`deletedAt` IS NULL);
+
+sql [2021-03-17 00:49:47] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = '776');
+
