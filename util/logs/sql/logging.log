@@ -1,0 +1,68 @@
+sql [2021-04-07 18:40:56] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(8) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-04-07 18:40:56] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-04-07 18:40:56] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-04-07 18:40:56] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(8) NOT NULL UNIQUE;
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL);
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-04-07 18:40:57] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-04-07 18:40:58] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-04-07 18:40:58] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Comments` (`id` INTEGER NOT NULL auto_increment , `commentId` VARCHAR(8) NOT NULL, `replyId` VARCHAR(8), `replyWhoId` VARCHAR(8), `content` TEXT NOT NULL, `flag` TINYINT(1) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `ArticleId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`ArticleId`) REFERENCES `Articles` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-04-07 18:40:58] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Comments`;
+
+sql [2021-04-07 18:40:58] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Comments' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-04-07 18:40:58] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `commentId` `commentId` VARCHAR(8) NOT NULL;
+
+sql [2021-04-07 18:40:58] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `replyId` `replyId` VARCHAR(8);
+
+sql [2021-04-07 18:40:58] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `replyWhoId` `replyWhoId` VARCHAR(8);
+
+sql [2021-04-07 18:40:58] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-04-07 18:40:58] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `flag` `flag` TINYINT(1) NOT NULL;
+
+sql [2021-04-07 18:40:58] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-04-07 18:40:58] [DEBUG]: Executing (default): ALTER TABLE `Comments` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-04-07 18:40:58] [DEBUG]: Executing (default): ALTER TABLE `Comments` ADD FOREIGN KEY (`ArticleId`) REFERENCES `Articles` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-04-07 18:40:58] [DEBUG]: Executing (default): SHOW INDEX FROM `Comments`
+

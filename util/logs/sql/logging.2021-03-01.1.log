@@ -1,0 +1,242 @@
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(16) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(16) NOT NULL UNIQUE;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-01 21:24:40] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-03-01 21:26:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-01 21:26:13] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-01 21:26:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL);
+
+sql [2021-03-01 21:29:29] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 'add');
+
+sql [2021-03-01 21:29:51] [DEBUG]: Executing (default): SELECT `id`, `title`, `content`, `imgurl`, `author`, `createdAt`, `deletedAt`, `AdminId` FROM `Articles` AS `Article` WHERE (`Article`.`deletedAt` IS NULL AND `Article`.`id` = 'add');
+
+sql [2021-03-01 21:30:18] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = 20);
+
+sql [2021-03-01 21:30:18] [DEBUG]: Executing (default): INSERT INTO `Articles` (`id`,`title`,`content`,`imgurl`,`author`,`createdAt`,`AdminId`) VALUES (DEFAULT,?,?,?,?,?,?);
+
+sql [2021-03-01 21:31:29] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 21:39:05] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 21:39:16] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 21:59:19] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:00:49] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:02:51] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(16) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(16) NOT NULL UNIQUE;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-01 22:08:13] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-01 22:08:14] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-03-01 22:08:31] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:08:32] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:08:34] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:09:18] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(16) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-03-01 22:09:18] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-03-01 22:09:18] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(16) NOT NULL UNIQUE;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-01 22:09:19] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-03-01 22:10:03] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(16) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-03-01 22:10:03] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-03-01 22:10:03] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-01 22:10:03] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(16) NOT NULL UNIQUE;
+
+sql [2021-03-01 22:10:03] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-03-01 22:10:03] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-01 22:10:03] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-01 22:10:04] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-03-01 22:10:04] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-01 22:10:04] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-03-01 22:10:04] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-01 22:10:04] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-03-01 22:10:04] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-01 22:10:04] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-03-01 22:10:04] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-03-01 22:10:04] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-01 22:10:04] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-01 22:10:04] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-01 22:10:04] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-03-01 22:10:15] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:10:16] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:10:55] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:10:56] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:11:04] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Admins` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(16) NOT NULL UNIQUE, `loginPwd` VARCHAR(16) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(16) NOT NULL UNIQUE;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(16) NOT NULL;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): CREATE TABLE IF NOT EXISTS `Articles` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(50) NOT NULL, `content` TEXT NOT NULL, `imgurl` VARCHAR(255), `author` VARCHAR(20) NOT NULL, `createdAt` DATETIME NOT NULL, `deletedAt` DATETIME, `AdminId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Articles`;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Articles' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='myblog' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `title` `title` VARCHAR(50) NOT NULL;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `content` `content` TEXT NOT NULL;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `author` `author` VARCHAR(20) NOT NULL;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): ALTER TABLE `Articles` ADD FOREIGN KEY (`AdminId`) REFERENCES `Admins` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2021-03-01 22:11:32] [DEBUG]: Executing (default): SHOW INDEX FROM `Articles`
+
+sql [2021-03-01 22:19:33] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:21:40] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:22:43] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:25:38] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvxsad' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+
+sql [2021-03-01 22:25:45] [DEBUG]: Executing (default): SELECT `id`, `loginId`, `loginPwd`, `createdAt`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'qfqsiwmvx' AND `Admin`.`loginPwd` = 'aUjD8Ed8588xWrwW'));
+

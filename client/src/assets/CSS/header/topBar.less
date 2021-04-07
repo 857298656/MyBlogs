@@ -1,0 +1,72 @@
+.h-topBar {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .h-nav {
+    float: left;
+    margin: 0;
+    padding: 0;
+    li {
+      float: left;
+      &.n-item {
+        width: 50px;
+        margin-right: 20px;
+        box-sizing: border-box;
+        text-align: center;
+        cursor: pointer;
+        &:hover {
+          height: 35px;
+          width: 50px;
+          background-color: rgb(102, 100, 100);
+          color: #fff;
+        }
+        a {
+          color: rgb(255, 255, 255);
+          text-decoration: none;
+        }
+      }
+      &.once {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .h-login {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    li {
+      float: left;
+      &.l-item {
+        width: 50px;
+        box-sizing: border-box;
+        text-align: center;
+        cursor: pointer;
+        &:hover {
+          height: 35px;
+          width: 50px;
+          background-color: rgb(102, 100, 100);
+          color: #fff;
+        }
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+    .l-release {
+      position: relative;
+      width: 50px;
+      left: 40px;
+      top: 3px;
+      height: 30px;
+      line-height: 30px;
+      background-color: rgb(4, 183, 214);
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}
